@@ -484,7 +484,7 @@ public class jf_editHD extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Chọn đơn vị tính");
+        jLabel1.setText("Nhóm món");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Nhập từ khóa");
