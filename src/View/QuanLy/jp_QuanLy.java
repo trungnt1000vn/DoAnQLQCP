@@ -29,7 +29,13 @@ public class jp_QuanLy extends javax.swing.JPanel {
 //                } 
 //                jpView.add(banhang);
 //                break;
-            case 1:
+//            case 2:
+//                if (nhommon == null) {
+//                    nhommon = new ();
+//                }
+//                jpQuanLy.add(nhommon);
+//                break;
+            case 3:
                 if (ban == null) {
                     ban = new jp_QuanLyBan();
                 }
@@ -151,7 +157,7 @@ public class jp_QuanLy extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBanActionPerformed
-        reloadPanel(1);
+        reloadPanel(3);
     }//GEN-LAST:event_btBanActionPerformed
 
 
