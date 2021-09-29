@@ -154,7 +154,7 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"Bạn đăng nhập thành công");
                     jf_TrangChu tc = new jf_TrangChu();
                     tc.setVisible(true);
-                    
+                    this.dispose();
                 }
              else {
                         JOptionPane.showMessageDialog(this,"Bạn đăng nhập không thành công");

@@ -6,6 +6,7 @@
 package View;
 
 import DAO.BanDAO;
+import Login.Login;
 import Model.Ban;
 import View.BanHang.jp_BanHang;
 import View.HoaDon.jp_HoaDon;
@@ -314,7 +315,9 @@ public class jf_TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btThongKeActionPerformed
 
     private void btThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThoatActionPerformed
-        
+            this.dispose();
+            Login lg = new Login();
+            lg.setVisible(true);
     }//GEN-LAST:event_btThoatActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
