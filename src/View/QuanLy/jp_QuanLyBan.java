@@ -122,6 +122,7 @@ public class jp_QuanLyBan extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tableBan);
 
+        txtSearch.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchKeyReleased(evt);
@@ -366,6 +367,7 @@ public class jp_QuanLyBan extends javax.swing.JPanel {
     }//GEN-LAST:event_btEditBanActionPerformed
 
     private void btDeleteBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteBanActionPerformed
+        try {
         int row = tableBan.getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn bàn muốn xóa!", "Error Warning", JOptionPane.ERROR_MESSAGE);
@@ -377,13 +379,12 @@ public class jp_QuanLyBan extends javax.swing.JPanel {
                 banDAO.deleteBan(maban);
 
                 LamMoi();
-                try {
-                    jp_BanHang.bh.QuanLyBan();
-                    jp_BanHang.bh.updateUI();
-                } catch (Exception e) {
-                }
+                
             }
         }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Sản phẩm tồn tại trong 1 hóa đơn không thể xóa!");
+                }
     }//GEN-LAST:event_btDeleteBanActionPerformed
 
     private void btAddBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddBanActionPerformed

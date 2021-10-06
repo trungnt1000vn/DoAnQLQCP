@@ -612,7 +612,7 @@ public class jf_editHD extends javax.swing.JFrame {
             String MaHD = lblMaHD.getText().toString();
             HoaDon hd = hoadonDAO.getHoaDonByMaHD(MaHD);
             //xóa ds trc đó trong mysql
-            CTHoaDon cthd = cthoadonDAO.getCTHoaDonByMaHD(MaHD);
+            CTHoaDon cthd = cthoadonDAO.getCTHDbyMaHD(MaHD);
             cthoadonDAO.deleteCTHoaDon(MaHD);
             for (int i = 0; i < tableCTHD.getRowCount(); i++) {
             //thêm ds mới trong table vào mysql

@@ -27,7 +27,6 @@ public class CTHoaDonDAO {
         List<CTHoaDon> CTHDlist = new ArrayList<CTHoaDon>();
         
         conn = MyConnection.getMyConnection();
-        
         String sql = "SELECT * FROM cthoadon WHERE MaHD = ?";
         
         try{
@@ -47,19 +46,17 @@ public class CTHoaDonDAO {
                 
                 CTHDlist.add(cthd);
             }
-            ps.close();
-            conn.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
         return CTHDlist;
     }
     
-    public CTHoaDon getCTHoaDonByMaHD(String mahd){
+    public CTHoaDon getCTHDbyMaHD(String mahd){
         
         conn = MyConnection.getMyConnection();
         
-        String sql = "SELECT * FROM cthoadon WHERE MaHD = ?";
+        String sql = "SELECT * FROM cthoadon WHERE MaHD = ? and mamon = ?";
         
         try{
             ps = conn.prepareStatement(sql);
@@ -78,13 +75,41 @@ public class CTHoaDonDAO {
                 
                 return cthd;
             }
-            ps.close();
-            conn.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
         return null;// nếu không có dữ liệu
     }
+    
+    public CTHoaDon getCTHDbyMaHDAndMaMon(String mahd, int mamon){
+        
+        conn = MyConnection.getMyConnection();
+        String sql = "SELECT * FROM cthoadon WHERE MaHD = ? and mamon = ?";
+        
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,mahd);
+            ps.setInt(2, mamon);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                CTHoaDon cthd = new CTHoaDon();             
+                cthd.setMahd(rs.getString("MaHD"));
+                cthd.setMamon(rs.getInt("MaMon"));
+                cthd.setTenmon(rs.getString("TenMon"));
+                cthd.setDvtinh(rs.getString("DVTinh"));
+                cthd.setSoluong(rs.getInt("SoLuong"));
+                cthd.setDongia(rs.getFloat("DonGia"));
+                cthd.setThanhtien(rs.getFloat("ThanhTien"));
+                
+                return cthd;
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;// nếu không có dữ liệu
+    }
+    
     public void addCTHoaDon(CTHoaDon cthd){
         
         conn = MyConnection.getMyConnection();
@@ -103,7 +128,26 @@ public class CTHoaDonDAO {
             ps.setFloat(7, cthd.getThanhtien());
             
             int rs = ps.executeUpdate();
-
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void updateCTHoaDon(CTHoaDon cthd){
+        
+        Connection connection = MyConnection.getMyConnection();
+        
+        String sql = "update cthoadon set soluong = ?, thanhtien = ? WHERE mahd = ? and mamon = ?";
+        
+        try{
+            PreparedStatement ps = connection.prepareStatement(sql);
+            
+            ps.setString(3, cthd.getMahd());
+            ps.setInt(4, cthd.getMamon());
+            ps.setInt(1, cthd.getSoluong());
+            ps.setFloat(2, cthd.getThanhtien());
+            
+            int rs = ps.executeUpdate();
         }catch (SQLException e) {
             e.printStackTrace();
         }

@@ -11,18 +11,19 @@ package Model;
  */
 public class ThucDon {
     private int mamon, manhom;
-    private String tenmon, dvtinh; 
+    private String tenmon, dvtinh, trangthai; 
     private float dongia;
 
     public ThucDon() {
     }
 
-    public ThucDon(int mamon, int manhom, String tenmon, String dvtinh, float dongia) {
+    public ThucDon(int mamon, int manhom, String tenmon, String dvtinh, float dongia, String trangthai) {
         this.mamon = mamon;
         this.manhom = manhom;
         this.tenmon = tenmon;
         this.dvtinh = dvtinh;
         this.dongia = dongia;
+        this.trangthai = trangthai;
     }
 
 
@@ -65,6 +66,13 @@ public class ThucDon {
     public void setDongia(float dongia) {
         this.dongia = dongia;
     }
-    
+
+    public String getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(String trangthai) {
+        this.trangthai = trangthai;
+    }
     
 }

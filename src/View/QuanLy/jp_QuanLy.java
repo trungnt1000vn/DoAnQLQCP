@@ -12,9 +12,8 @@ package View.QuanLy;
 public class jp_QuanLy extends javax.swing.JPanel {
 
     jp_QuanLyBan ban;
-    /**
-     * Creates new form jp_QuanLy
-     */
+    jp_QuanLyThucDon thucdon;
+
     public jp_QuanLy() {
         initComponents();
         reloadPanel(1);
@@ -23,19 +22,13 @@ public class jp_QuanLy extends javax.swing.JPanel {
     private void reloadPanel(int i) {
         jpQuanLy.removeAll();
         switch (i) {
-//            case 1:
-//                if (thucdon == null) {
-//                    thucDon = new ;
-//                } 
-//                jpView.add(banhang);
-//                break;
-//            case 2:
-//                if (nhommon == null) {
-//                    nhommon = new ();
-//                }
-//                jpQuanLy.add(nhommon);
-//                break;
-            case 3:
+            case 1:
+                if (thucdon == null) {
+                    thucdon = new jp_QuanLyThucDon();
+                } 
+                jpQuanLy.add(thucdon);
+                break;
+            case 2:
                 if (ban == null) {
                     ban = new jp_QuanLyBan();
                 }
@@ -72,7 +65,6 @@ public class jp_QuanLy extends javax.swing.JPanel {
         btBan = new javax.swing.JButton();
         btNhanVien = new javax.swing.JButton();
         btTaiKhoan = new javax.swing.JButton();
-        btNhomMon = new javax.swing.JButton();
         jpQuanLy = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -82,6 +74,11 @@ public class jp_QuanLy extends javax.swing.JPanel {
 
         btThucDon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btThucDon.setText("Quản lý thực đơn");
+        btThucDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThucDonActionPerformed(evt);
+            }
+        });
 
         btBan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btBan.setText("Quản lý bàn");
@@ -97,9 +94,6 @@ public class jp_QuanLy extends javax.swing.JPanel {
         btTaiKhoan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btTaiKhoan.setText("Quản lý tài khoản");
 
-        btNhomMon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btNhomMon.setText("Quản lý nhóm món");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,8 +104,7 @@ public class jp_QuanLy extends javax.swing.JPanel {
                     .addComponent(btThucDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btBan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
                     .addComponent(btNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
-                    .addComponent(btTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
-                    .addComponent(btNhomMon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -120,14 +113,12 @@ public class jp_QuanLy extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(btThucDon, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btNhomMon, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(btBan, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addContainerGap(453, Short.MAX_VALUE))
         );
 
         jpQuanLy.setBackground(new java.awt.Color(255, 255, 255));
@@ -157,14 +148,17 @@ public class jp_QuanLy extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBanActionPerformed
-        reloadPanel(3);
+        reloadPanel(2);
     }//GEN-LAST:event_btBanActionPerformed
+
+    private void btThucDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThucDonActionPerformed
+        reloadPanel(1);
+    }//GEN-LAST:event_btThucDonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBan;
     private javax.swing.JButton btNhanVien;
-    private javax.swing.JButton btNhomMon;
     private javax.swing.JButton btTaiKhoan;
     private javax.swing.JButton btThucDon;
     private javax.swing.JPanel jPanel1;

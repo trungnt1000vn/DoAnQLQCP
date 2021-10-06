@@ -13,7 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JButton;
-import javax.swing.JPanel;
+
 
 
 /**
@@ -23,22 +23,26 @@ import javax.swing.JPanel;
 public class jp_BanHang extends javax.swing.JPanel {
 
     BanDAO banDAO = new BanDAO();
-    
+    jp_GoiMon goimon;
     List<Ban> ListBan;
     List<Ban> ban;
     /**
-     * Creates new form jpBanHang
+     * Creates new form jp_BanHang
      */
     public static jp_BanHang bh;
     public jp_BanHang() {
         initComponents();
         bh=this;
-//        this.setSize(1800, 836);
-//        jpTaoHoaDon.setSize(1244, 836);
         QuanLyBan();
     }
 
-    
+    public void jpTaoHoaDon() {
+        jpTaoHoaDon.removeAll();
+        jpTaoHoaDon.add(jLabel6);
+        jpTaoHoaDon.updateUI();        
+    }
+
+
     public void QuanLyBan() {
         ListBan = banDAO.getListBan(0);
         if (ListBan != null) {
@@ -50,7 +54,6 @@ public class jp_BanHang extends javax.swing.JPanel {
                 btn[i].setName(String.valueOf(ListBan.get(i).getMaban()));
                 String[] mb = ListBan.get(i).getTenban().split(" ");
                 btn[i].setText(mb[1]);
-//                System.out.println("View.BanHang.jp_BanHang.QuanLyBan():"+mb[1]);
                 btn[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Table.png")));
                 btn[i].setBackground(Color.decode("#00FF00"));
                 btn[i].setFont(new java.awt.Font("Tahoma", 1, 14)); // kiểu chữ, cỡ chữ
@@ -62,18 +65,16 @@ public class jp_BanHang extends javax.swing.JPanel {
                     btn[i].setBackground(Color.decode("#FFFF00"));
                 }
                 btn[i].setPreferredSize(new Dimension(105, 70));
-
                 btn[i].addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent e) {
-//                            JpGoiMon goimon;
-//                            ban = cn.GetBan(Integer.parseInt(e.getComponent().getName()));
-//                            if(ban != null){                            
-//                                goimon = new jpTaoHoaDon(ban.get(0).GetTrangThai(),ban.get(0).GetTenBan(),ban.get(0).GetMaBan());
-//                                jpTaoHoaDon.removeAll();
-//                                jpTaoHoaDon.add(goimon);
-//                                jpTaoHoaDon.updateUI();
-//                            }
+                            ban = banDAO.getListBan(Integer.parseInt(e.getComponent().getName()));
+                            if(ban != null){                            
+                                goimon = new jp_GoiMon(ban.get(0).getTrangthai(),ban.get(0).getTenban(),ban.get(0).getMaban());
+                                jpTaoHoaDon.removeAll();
+                                jpTaoHoaDon.add(goimon);
+                                jpTaoHoaDon.updateUI();
+                            }
                     }
                 });
                 jpBan.add(btn[i]);
@@ -91,114 +92,115 @@ public class jp_BanHang extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jpQuanLyBan = new javax.swing.JPanel();
-        btBanTrong = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        btBanTrong1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        btBanTrong2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jpTaoHoaDon = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jpQuanLyBan = new javax.swing.JPanel();
         jpBan = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btBanTrong2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btBanTrong1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btBanTrong = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1350, 744));
 
+        jpTaoHoaDon.setBackground(new java.awt.Color(255, 255, 255));
+        jpTaoHoaDon.setPreferredSize(new java.awt.Dimension(1244, 839));
+        jpTaoHoaDon.setLayout(new java.awt.BorderLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuanCaPhe.jpg"))); // NOI18N
+        jpTaoHoaDon.add(jLabel6, java.awt.BorderLayout.CENTER);
+
         jpQuanLyBan.setBackground(new java.awt.Color(255, 255, 255));
 
-        btBanTrong.setBackground(new java.awt.Color(0, 255, 0));
-        btBanTrong.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jpBan.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Trống");
-
-        btBanTrong1.setBackground(new java.awt.Color(255, 255, 0));
-        btBanTrong1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Đã đặt trước");
-
-        btBanTrong2.setBackground(new java.awt.Color(255, 0, 0));
-        btBanTrong2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuanLyBan.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Đang phục vụ");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuanLyBan.png"))); // NOI18N
+        btBanTrong2.setBackground(new java.awt.Color(255, 0, 0));
+        btBanTrong2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btBanTrong2.setOpaque(false);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Đã đặt trước");
+
+        btBanTrong1.setBackground(new java.awt.Color(255, 255, 0));
+        btBanTrong1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btBanTrong1.setOpaque(false);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Trống");
+
+        btBanTrong.setBackground(new java.awt.Color(0, 255, 0));
+        btBanTrong.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btBanTrong.setOpaque(false);
 
         javax.swing.GroupLayout jpQuanLyBanLayout = new javax.swing.GroupLayout(jpQuanLyBan);
         jpQuanLyBan.setLayout(jpQuanLyBanLayout);
         jpQuanLyBanLayout.setHorizontalGroup(
             jpQuanLyBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpQuanLyBanLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addComponent(jpBan, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jpQuanLyBanLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jpQuanLyBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jpQuanLyBanLayout.createSequentialGroup()
-                        .addComponent(btBanTrong1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jpQuanLyBanLayout.createSequentialGroup()
-                        .addComponent(btBanTrong2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3))
-                    .addGroup(jpQuanLyBanLayout.createSequentialGroup()
-                        .addComponent(btBanTrong, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                    .addComponent(btBanTrong2, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                    .addComponent(btBanTrong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btBanTrong1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpQuanLyBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         jpQuanLyBanLayout.setVerticalGroup(
             jpQuanLyBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpQuanLyBanLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpQuanLyBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpQuanLyBanLayout.createSequentialGroup()
-                        .addGroup(jpQuanLyBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpQuanLyBanLayout.createSequentialGroup()
+                .addComponent(jpBan, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpQuanLyBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpQuanLyBanLayout.createSequentialGroup()
+                        .addGroup(jpQuanLyBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
                             .addComponent(btBanTrong, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addGroup(jpQuanLyBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btBanTrong1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2))
-                        .addGap(14, 14, 14)
-                        .addGroup(jpQuanLyBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btBanTrong2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jpQuanLyBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(btBanTrong1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jpQuanLyBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btBanTrong2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))))
                 .addContainerGap())
         );
-
-        jpTaoHoaDon.setBackground(new java.awt.Color(255, 255, 255));
-        jpTaoHoaDon.setLayout(new java.awt.BorderLayout());
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuanCaPhe.jpg"))); // NOI18N
-        jpTaoHoaDon.add(jLabel6, java.awt.BorderLayout.PAGE_START);
-
-        jpBan.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpQuanLyBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpBan, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jpQuanLyBan, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jpTaoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 1244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jpTaoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 1244, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpTaoHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jpBan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jpQuanLyBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jpTaoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpQuanLyBan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("");

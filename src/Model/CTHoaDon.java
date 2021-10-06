@@ -16,14 +16,13 @@ public class CTHoaDon extends ThucDon{
     public CTHoaDon() {
     }   
 
-    public CTHoaDon(String mahd, int soluong, float thanhtien, int mamon, int manhom, String tenmon, String dvtinh, float dongia) {
-        super(mamon, manhom, tenmon, dvtinh, dongia);
+    public CTHoaDon(String mahd, int soluong, float thanhtien, int mamon, int manhom, String tenmon, String dvtinh, float dongia, String trangthai) {
+        super(mamon, manhom, tenmon, dvtinh, dongia, trangthai);
         this.mahd = mahd;
         this.soluong = soluong;
         this.thanhtien = thanhtien;
     }
-    
-    
+
     public String getMahd() {
         return mahd;
     }

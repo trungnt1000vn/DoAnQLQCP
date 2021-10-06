@@ -44,9 +44,7 @@ public class HoaDonDAO {
                 hd.setTrangthai(rs.getString("TrangThai"));
                 
                 HDlist.add(hd);
-            }
-            ps.close();
-            conn.close();                
+            }              
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,8 +74,6 @@ public class HoaDonDAO {
                 
                 return hd;
             }
-            ps.close();
-            conn.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -139,8 +135,6 @@ public class HoaDonDAO {
                 
                 HDlist.add(hd);
             }
-            ps.close();
-            conn.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -148,45 +142,77 @@ public class HoaDonDAO {
     }
     
     
-//    
-//    public void addHoaDon(HoaDon hd){
-//        
-//        conn = MyConnection.getMyConnection();
-//        
-//        String sql = "INSERT INTO hoa_don(mahd, ngayban, tonggiaban) VALUE(?,?,?)";
-//        
-//        try{
-//            ps = connection.prepareStatement(sql);
-//            
-//            ps.setString(1, hd.getMahd());
-//            ps.setDate(2, hd.getNgayban());
-//            ps.setFloat(3, hd.getTonggiaban());
-//            
-//            int rs = ps.executeUpdate();
-//            
-//            ps.close();
-//            conn.close();
-//        }catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//    
+    
+    public void addHoaDon(HoaDon hd){
+        
+        conn = MyConnection.getMyConnection();
+        String sql = "INSERT INTO hoadon(MaBan, TenNV) VALUE(?,?)";
+        
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, hd.getMaban());
+            ps.setString(2, hd.getTennv());
+            
+            int rs = ps.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void updateHoaDon(HoaDon hd){
+        
+        conn = MyConnection.getMyConnection();
+        
+        String sql = "update hoadon set trangthai = ? WHERE mahd = ?";
+        
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setString(2, hd.getMahd());
+            ps.setString(1, hd.getTrangthai());
+            
+            int rs = ps.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     
     public void deleteHoaDon(String mahd){
         
         conn = MyConnection.getMyConnection();
-        
         String sql = "DELETE FROM hoadon WHERE MaHD = ?";
         
         try{
             ps = conn.prepareStatement(sql);
             ps.setString(1, mahd);            
             int rs = ps.executeUpdate();
-
-            ps.close();
-            conn.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+    public HoaDon GetHoaDonByMaBan(int maban){
+        
+        conn = MyConnection.getMyConnection();
+        String sql = "Select * From hoadon Where MaBan = ? AND TrangThai = 'Chưa thanh toán'";
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, maban);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                HoaDon hd = new HoaDon();               
+                hd.setMahd(rs.getString("MaHD"));
+                hd.setMaban(rs.getInt("MaBan"));
+                hd.setGioden(rs.getTimestamp("GioDen"));
+                hd.setGiocapnhat(rs.getTimestamp("GioCapNhat"));
+                hd.setTennv(rs.getString("TenNV"));
+                hd.setTongtien(rs.getFloat("TongTien"));
+                hd.setTrangthai(rs.getString("TrangThai"));
+                
+                return hd;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;        
     }
 }

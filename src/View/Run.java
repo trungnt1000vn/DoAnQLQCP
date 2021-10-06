@@ -10,6 +10,10 @@ package View;
  * @author NHT_Kurumi
  */
 public class Run {
+
+    public static jf_TrangChu tc;
+    public static jf_Login lg;
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -38,8 +42,15 @@ public class Run {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new jf_TrangChu().setVisible(true);
+                lg();
             }
         });
+    }
+
+    public static void lg() {
+        lg = new jf_Login();
+        lg.setVisible(true);
+        lg.setLocationRelativeTo(null);
+        
     }
 }

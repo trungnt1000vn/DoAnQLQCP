@@ -29,7 +29,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jpView" alignment="0" pref="1800" max="32767" attributes="0"/>
+          <Component id="jpView" alignment="0" min="-2" pref="1800" max="-2" attributes="0"/>
           <Component id="jpHome" alignment="0" pref="1800" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
@@ -274,6 +274,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>

@@ -27,14 +27,17 @@ public class jf_TrangChu extends javax.swing.JFrame {
     jp_QuanLy quanly;
     jp_ThongKe thongke;
     BanDAO banDAO = new BanDAO();
+    String manv;
     /**
      * Creates new form JFrameTrangChu
      */
-    public jf_TrangChu() {
+    public jf_TrangChu(String MaNV) {
         initComponents();
         setTitle("Quản lý quán cà phê");
         setResizable(false);//Vô hiệu hóa nút phóng to     
         getContentPane().setBackground(Color.WHITE);//Background đổi màu
+        
+        manv = MaNV;
         
         reloadPanel(1);
         Clock clock= new Clock(); 
@@ -287,7 +290,7 @@ public class jf_TrangChu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpView, javax.swing.GroupLayout.DEFAULT_SIZE, 1800, Short.MAX_VALUE)
+            .addComponent(jpView, javax.swing.GroupLayout.PREFERRED_SIZE, 1800, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jpHome, javax.swing.GroupLayout.DEFAULT_SIZE, 1800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -314,7 +317,10 @@ public class jf_TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btThongKeActionPerformed
 
     private void btThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThoatActionPerformed
-        
+        this.dispose();
+        jf_Login lg = new jf_Login();
+        lg.setLocationRelativeTo(null);
+        lg.setVisible(true);
     }//GEN-LAST:event_btThoatActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -365,7 +371,7 @@ public class jf_TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jpView;
     private javax.swing.JLabel lblSoBanDat;
     private javax.swing.JLabel lblSoBanPhucVu;
-    private javax.swing.JLabel lblTenNV;
+    public static javax.swing.JLabel lblTenNV;
     private javax.swing.JLabel lblTimeNow;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,7 +13,7 @@ import java.sql.Timestamp;
  * @author NHT_Kurumi
  */
 public class HoaDon {
-    private String mahd, trangthai, manv, tennv;
+    private String mahd, trangthai, tennv;
     private int maban;
     private Timestamp gioden, giocapnhat;
     private float tongtien;
@@ -21,10 +21,9 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public HoaDon(String mahd, String trangthai, String manv, String tennv, int maban, Timestamp gioden, Timestamp giocapnhat, float tongtien) {
+    public HoaDon(String mahd, String trangthai, String tennv, int maban, Timestamp gioden, Timestamp giocapnhat, float tongtien) {
         this.mahd = mahd;
         this.trangthai = trangthai;
-        this.manv = manv;
         this.tennv = tennv;
         this.maban = maban;
         this.gioden = gioden;
@@ -46,14 +45,6 @@ public class HoaDon {
 
     public void setMaban(int maban) {
         this.maban = maban;
-    }
-
-    public String getManv() {
-        return manv;
-    }
-
-    public void setManv(String manv) {
-        this.manv = manv;
     }
 
     public String getTennv() {
